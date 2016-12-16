@@ -108,6 +108,12 @@
         <!-- /.container-fluid -->
       </nav>
 
+      <div class="content">
+          <div class="title m-b-md">Hey there</div>
+            <p>Thanks so much for visiting. This is my attempt to create a blog with Laravel.</p>
+          </div>
+      </div>
+
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -119,11 +125,6 @@
                     @endif
                 </div>
             @endif
-
-            <div class="content">
-                <div class="title m-b-md">Welcome</div>
-                  <p>Let's get started</p>
-            </div>
         </div>
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

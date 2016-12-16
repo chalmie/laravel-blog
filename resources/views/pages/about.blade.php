@@ -85,8 +85,8 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="/">Home</a></li>
-              <li><a href="/about">About</a></li>
+              <li><a href="/">Home</a></li>
+              <li class="active"><a href="/about">About</a></li>
               <li><a href="/contact">Contact</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -107,6 +107,12 @@
         <!-- /.container-fluid -->
       </nav>
 
+      <div class="content">
+          <div class="title m-b-md">About {{ $data["firstname"] }}</div>
+            <p>Email: {{ $data["email"] }}</p>
+          </div>
+      </div>
+
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -118,12 +124,8 @@
                     @endif
                 </div>
             @endif
-
-            <div class="content">
-                <div class="title m-b-md">About {{ $data["firstname"] }}</div>
-                  <p>Email: {{ $data["email"] }}</p>
-            </div>
         </div>
+
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

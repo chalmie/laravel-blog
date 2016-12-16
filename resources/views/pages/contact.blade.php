@@ -85,9 +85,9 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="/">Home</a></li>
+              <li><a href="/">Home</a></li>
               <li><a href="/about">About</a></li>
-              <li><a href="/contact">Contact</a></li>
+              <li class="active"><a href="/contact">Contact</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li class="dropdown">
@@ -106,23 +106,49 @@
         </div>
         <!-- /.container-fluid -->
       </nav>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
-                    @endif
-                </div>
-            @endif
 
-            <div class="content">
-                <div class="title m-b-md">Contact Me</div>
-                  <p>Email: blairpetersoniv@gmail.com</p>
-            </div>
+      <div class="container">
+        <div class="row">
+          <div class="content">
+              <div class="title m-b-md">Contact Me</div>
+          </div>
         </div>
+        <div class="col-md-12">
+          <hr>
+          <form>
+            <div class="form-group">
+              <label name="email">Email:</label>
+              <input id="email" name="email" class="form-control">
+            </div>
+
+            <div class="form-group">
+              <label name="subject">Subject:</label>
+              <input id="subject" name="subject" class="form-control">
+            </div>
+
+            <div class="form-group">
+              <label name="message">Message:</label>
+              <textarea id="message" name="message" class="form-control">Type your message here...</textarea>
+            </div>
+
+            <input type="submit" value="Send Message" class="btn btn-success">
+          </form>
+        </div>
+      </div>
+
+      <div class="flex-center position-ref full-height">
+          @if (Route::has('login'))
+              <div class="top-right links">
+                  @if (Auth::check())
+                      <a href="{{ url('/home') }}">Home</a>
+                  @else
+                      <a href="{{ url('/login') }}">Login</a>
+                      <a href="{{ url('/register') }}">Register</a>
+                  @endif
+              </div>
+          @endif
+      </div>
+
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
