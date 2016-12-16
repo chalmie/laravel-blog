@@ -1,9 +1,9 @@
-@include('_head')
+@include('partials._head')
     <body>
-      @include('_navbar')
+      @include('partials._navbar')
       @yield('content')
 
-      <div class="flex-center position-ref full-height">
+      {{-- <div class="flex-center position-ref full-height">
           @if (Route::has('login'))
               <div class="top-right links">
                   @if (Auth::check())
@@ -14,7 +14,9 @@
                   @endif
               </div>
           @endif
-      </div>
+      </div> --}}
+
+      @include('partials._footer')
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
