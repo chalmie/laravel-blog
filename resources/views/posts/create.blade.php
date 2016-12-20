@@ -3,7 +3,7 @@
 @section('title', '| Create New Post')
 
 @section('stylesheets')
-  {{!! Html::style('css/parsley.css') !!}}
+  {!! Html::style('css/parsley.css') !!}
 @endsection
 
 @section('content')
@@ -28,5 +28,5 @@
 @endsection
 
 @section('scripts')
-  {{!! Html::script('js/parsley.min.js') !!}}
+  {!! Html::script('js/parsley.min.js') !!}
 @endsection
