@@ -14,7 +14,7 @@
       <hr>
       {!! Form::open(['route' => 'posts.store', 'data-parsley-validate' => '']) !!}
         {{ Form::label('title', 'Title:') }}
-        {{ Form::text('title', null, array('class' => 'form-control', 'required' => '', 'maxlength' => '255')) }}
+        {{ Form::text('title', null, array('class' => 'form-control', 'required' => '', 'data-parsley-maxlength' => '255')) }}
 
         {{ Form::label('body', 'Body:') }}
         {{ Form::textarea('body', null, array('class' => 'form-control', 'required' => '')) }}
@@ -28,7 +28,5 @@
 @endsection
 
 @section('scripts')
-
   {{!! Html::script('js/parsley.min.js') !!}}
-
 @endsection
