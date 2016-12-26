@@ -64,4 +64,13 @@
     .m-b-md {
         margin-bottom: 30px;
     }
+
+    .btn-h1-spacing {
+      margin-top: 18px;
+    }
+
+    .form-spacing-top {
+      margin-top: 30px;
+    }
+
 </style>
