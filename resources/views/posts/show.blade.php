@@ -22,7 +22,6 @@
         </dl>
         <hr>
         <div class="row">
-
           <div class="col-sm-6">
             {!! Html::linkRoute(
               'posts.edit',
@@ -31,7 +30,6 @@
               array('class' => 'btn btn-info btn-block'))
             !!}
           </div>
-
           <div class="col-sm-6">
             {!! Form::open(['route' => ['posts.destroy', $post->id], 'method' => 'DELETE']) !!}
             {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-block']) !!}
