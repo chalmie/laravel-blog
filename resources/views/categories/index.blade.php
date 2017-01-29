@@ -30,6 +30,7 @@
           <h2>New Category</h2>
           {{ Form::label('name', 'Name:') }}
           {{ Form::text('name', null, ['class' => 'form-control']) }}
+          {{ Form::submit('Add', ['class' => 'btn btn-info btn-block btn-h1-spacing']) }}
         {!! Form::close() !!}
       </div>
     </div>
