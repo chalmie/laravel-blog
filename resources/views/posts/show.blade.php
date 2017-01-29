@@ -14,7 +14,7 @@
       <div class="well">
         <dl class="dl-horizontal">
           <label>URL:</label>
-          <a href="{{ url($post->slug) }}">{{ url($post->slug) }}</a>
+          <a href="{{ url('blog/' . $post->slug) }}">{{ url('blog/' . $post->slug) }}</a>
         </dl>
         <dl class="dl-horizontal">
           <label>Created at:</label>
