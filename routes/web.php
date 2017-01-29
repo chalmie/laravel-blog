@@ -18,3 +18,7 @@ Route::resource('posts', 'PostController');
 // Route::post('/contact', 'PagesController@postContact');
 Route::get('blog', ['uses' => 'BlogController@getArchive', 'as' => 'blog.index']);
 Route::get('blog/{slug}', ['uses' => 'BlogController@getSingle', 'as' => 'blog.single'])->where('slug', '[\w\d\-\_]+');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
