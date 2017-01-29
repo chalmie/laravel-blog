@@ -14,7 +14,10 @@
       <hr>
       {!! Form::open(['route' => 'posts.store', 'data-parsley-validate' => '']) !!}
         {{ Form::label('title', 'Title:') }}
-        {{ Form::text('title', null, array('class' => 'form-control', 'required' => '', 'data-parsley-maxlength' => '255')) }}
+        {{ Form::text('title', null, array('class' => 'form-control', 'required' => '', 'data-parsely-minlength' => '5', 'data-parsley-maxlength' => '255')) }}
+
+        {{ Form::label('slug', 'Slug:') }}
+        {{ Form::text('slug', null, array('class' => 'form-control', 'required' => '', 'data-parsely-maxlength' => '255')) }}
 
         {{ Form::label('body', 'Body:') }}
         {{ Form::textarea('body', null, array('class' => 'form-control', 'required' => '')) }}

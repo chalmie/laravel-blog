@@ -13,12 +13,16 @@
     <div class="col-md-4">
       <div class="well">
         <dl class="dl-horizontal">
-          <dt>Created at:</dt>
-          <dd>{{ date('M j, Y h:i', strtotime($post->created_at)) }}</dd>
+          <label>URL:</label>
+          <a href="{{ url($post->slug) }}">{{ url($post->slug) }}</a>
         </dl>
         <dl class="dl-horizontal">
-          <dt>Updated at:</dt>
-          <dd>{{ date('M j, Y h:i', strtotime($post->updated_at)) }}</dd>
+          <label>Created at:</label>
+          {{ date('M j, Y h:i', strtotime($post->created_at)) }}
+        </dl>
+        <dl class="dl-horizontal">
+          <label>Updated at:</label>
+          {{ date('M j, Y h:i', strtotime($post->updated_at)) }}
         </dl>
         <hr>
         <div class="row">
@@ -27,13 +31,18 @@
               'posts.edit',
               'Edit',
               array($post->id),
-              array('class' => 'btn btn-info btn-block'))
+              array('class' => 'btn btn-warning btn-block'))
             !!}
           </div>
           <div class="col-sm-6">
             {!! Form::open(['route' => ['posts.destroy', $post->id], 'method' => 'DELETE']) !!}
             {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-block']) !!}
             {!! Form::close() !!}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            {{ Html::linkRoute('posts.index', 'All Posts', [], ['class' => 'btn btn-default btn-block btn-h1-spacing']) }}
           </div>
         </div>
       </div>

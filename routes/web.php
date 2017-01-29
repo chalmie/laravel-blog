@@ -16,3 +16,5 @@ Route::get('/about', 'PagesController@getAbout');
 Route::get('/contact', 'PagesController@getContact');
 Route::resource('posts', 'PostController');
 // Route::post('/contact', 'PagesController@postContact');
+
+Route::get('blog/{slug}', ['as' => 'blog.single'])
