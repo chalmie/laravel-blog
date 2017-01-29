@@ -24,7 +24,24 @@
             <li><a href="#">Another action</a></li>
             <li><a href="#">Something else here</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
+                @if (Route::has('login'))
+                  @if (Auth::check())
+                    <li>
+                        <a href="{{ url('/logout') }}"
+                            onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+
+                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>
+                  @else
+                      <li><a href="{{ url('/login') }}">Login</a></li>
+                      <li><a href="{{ url('/register') }}">Register</a></li>
+                  @endif
+                @endif
           </ul>
         </li>
       </ul>
