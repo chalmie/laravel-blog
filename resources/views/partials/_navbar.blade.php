@@ -20,7 +20,6 @@
           <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li class="{{ Request::is('blog') ? "active" : "" }}"><a href="/blog">Archive</a></li>
-            <li><a href="#">Something else here</a></li>
             <li role="separator" class="divider"></li>
                 @if (Route::has('login'))
                   @if (Auth::check())
