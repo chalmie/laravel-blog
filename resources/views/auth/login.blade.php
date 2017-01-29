@@ -50,13 +50,14 @@
 
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-info">
                                     Login
                                 </button>
 
                                 <a class="btn btn-link" href="{{ url('/password/reset') }}">
                                     Forgot Your Password?
                                 </a>
+                                <a href="{{ url('/register') }}" class="btn btn-warning">New User?</a>
                             </div>
                         </div>
                     </form>
