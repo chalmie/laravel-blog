@@ -24,6 +24,15 @@
         </tbody>
       </table>
     </div>
+    <div class="col-md-3">
+      <div class="well">
+        {!! Form::open(['route' => 'categories.store']) !!}
+          <h2>New Category</h2>
+          {{ Form::label('name', 'Name:') }}
+          {{ Form::text('name', null, ['class' => 'form-control']) }}
+        {!! Form::close() !!}
+      </div>
+    </div>
   </div>
 
 @endsection
