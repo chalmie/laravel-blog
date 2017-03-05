@@ -28,3 +28,6 @@ Route::resource('posts', 'PostController');
 
 // Admin Categories
 Route::resource('categories', 'CategoryController', ['except' => 'create']);
+
+// Admin Tags
+Route::resource('tags', 'TagController');
