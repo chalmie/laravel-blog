@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Post;
 use App\Category;
+use App\Tag;
 use Session;
 
 class PostController extends Controller
@@ -35,7 +36,8 @@ class PostController extends Controller
     public function create()
     {
       $categories = Category::all();
-      return view('posts.create')->withCategories($categories);
+      $tags = Tag::all();
+      return view('posts.create')->withCategories($categories)->withTags($tags);
     }
 
     /**

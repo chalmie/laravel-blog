@@ -2,6 +2,10 @@
 
 @section('title','| Edit Blog Post')
 
+@section('stylesheets')
+  {!! Html::style('css/select2.min.css') !!}
+@endsection
+
 @section('content')
 
   <div class="row">
@@ -48,4 +52,8 @@
     {!! Form::close() !!}
   </div>
 
+@endsection
+
+@section('scripts')
+  {!! Html::script('js/select2.min.js') !!}
 @endsection
