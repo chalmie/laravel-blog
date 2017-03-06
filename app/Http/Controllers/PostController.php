@@ -62,6 +62,10 @@ class PostController extends Controller
       $post->body = $request->body;
       $post->save();
 
+      // Second parameter 'false' means 'Do not override existing associations'.
+      // If it's true, past associations will be deleted.
+      $post->tags()->sync($request->tags, false);
+
       Session::flash('success', 'Successfully saved!');
       return redirect()->route('posts.show', $post->id);
     }
@@ -89,11 +93,18 @@ class PostController extends Controller
     {
       $post = Post::find($id);
       $categories = Category::all();
+      $tags = Tag::all();
+
       $cats = array();
       foreach ($categories as $category) {
         $cats[$category->id] = $category->name;
       }
-      return view('posts.edit')->withPost($post)->withCategories($cats);
+      $post_tags = array();
+      foreach ($tags as $tag) {
+        $post_tags[$tag->id] = $tag->name;
+      }
+
+      return view('posts.edit')->withPost($post)->withCategories($cats)->withTags($post_tags);
     }
 
     /**
@@ -127,6 +138,10 @@ class PostController extends Controller
       $post->category_id = $request->input('category_id');
       $post->body = $request->input('body');
       $post->save();
+
+      // Second parameter 'false' means 'Do not override existing associations'.
+      // Since we're editing, we want it to be true.
+      $post->tags()->sync($request->tags, true);
 
       Session::flash('success', 'This post was successfully saved.');
       return redirect()->route('posts.show',$post->id);
