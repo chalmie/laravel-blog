@@ -12,13 +12,14 @@
           <tr>
             <th>#</th>
             <th>Name</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           @foreach ($tags as $tag)
             <tr>
               <th>{{ $tag->id }}</th>
-              <td>{{ $tag->name }}</td>
+              <td><a href="{{ route('tags.show', $tag->id) }}">{{ $tag->name }}</a></td>
             </tr>
           @endforeach
         </tbody>
