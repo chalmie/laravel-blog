@@ -17,7 +17,8 @@ Auth::routes();
 Route::get('/', 'PagesController@getIndex');
 Route::get('/about', 'PagesController@getAbout');
 Route::get('/contact', 'PagesController@getContact');
-// Route::post('/contact', 'PagesController@postContact');
+Route::post('/contact', 'PagesController@postContact');
+Route::get('contact', ['uses' => 'PagesController@getContact', 'as' => 'home']);
 
 // Public posts
 Route::get('blog', ['uses' => 'BlogController@getArchive', 'as' => 'blog.index']);
