@@ -60,7 +60,8 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        //
+      $tag = Tag::find($id);
+      return view('tags.edit')->withTag($tag);
     }
 
     /**
@@ -72,7 +73,15 @@ class TagController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $tag = Tag::find($id);
+      $this->validate($request, array('name' => 'required|max:255'));
+
+      // $request->name syntax also works
+      $tag->name = $request->input('name');
+      $tag->save();
+
+      Session::flash('success', 'This tag was successfully updated.');
+      return redirect()->route('tags.show',$tag->id);
     }
 
     /**
