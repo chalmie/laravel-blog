@@ -141,7 +141,12 @@ class PostController extends Controller
 
       // Second parameter 'false' means 'Do not override existing associations'.
       // Since we're editing, we want it to be true.
-      $post->tags()->sync($request->tags, true);
+      if(isset($request->tags)) {
+        $post->tags()->sync($request->tags, true);
+      } else {
+        $post->tags()->sync(array());
+      }
+
 
       Session::flash('success', 'This post was successfully saved.');
       return redirect()->route('posts.show',$post->id);
