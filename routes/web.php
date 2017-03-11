@@ -24,6 +24,9 @@ Route::get('contact', ['uses' => 'PagesController@getContact', 'as' => 'home']);
 Route::get('blog', ['uses' => 'BlogController@getArchive', 'as' => 'blog.index']);
 Route::get('blog/{slug}', ['uses' => 'BlogController@getSingle', 'as' => 'blog.single'])->where('slug', '[\w\d\-\_]+');
 
+// Comments
+Route::post('comments/{id}', ['uses' => 'CommentsController@store', 'as' => 'comments.store']);
+
 // Admin Posts
 Route::resource('posts', 'PostController');
 
