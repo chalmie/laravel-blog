@@ -26,12 +26,33 @@
               {{ Form::label('comment', "Comment:") }}
               {{ Form::textarea('comment', null, ['class' => 'form-control', 'rows' => '3']) }}
 
-              {{ Form::submit('Add Comment', ['class' => 'btn btn-info pull-right', 'style' => 'margin-top:1em;']) }}
+              {{ Form::submit('Add Comment', ['class' => 'btn btn-info pull-right', 'style' => 'margin:1em 1em;']) }}
             </div>
           </div>
 
         {{ Form::close() }}
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <h3 class="comment-title">{{ $post->comments()->count() }} Comments <span class="glyphicon glyphicon-comment"></span></h3>
+          @foreach($post->comments as $comment)
+            <div class="comment">
+              <div class="author-info">
+                <img src={{"https://www.gravatar.com/avatar/" . md5(strtolower(trim($comment->email))) . "?s=50&d=mm" }} class="author-image">
+                <div class="author-name">
+                  <h4>{{ $comment->name }}</h4>
+                  <p class="author-time">{{ $comment->created_at->diffForHumans() }}</p>
+                </div>
+              </div>
+              <div class="comment-content">
+                {{ $comment->comment }}
+              </div>
+            </div>
+          @endforeach
+      </div>
+    </div>
+
   </div>
 @endsection
