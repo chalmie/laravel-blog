@@ -15,6 +15,30 @@
           <span class="label label-default">{{ $tag->name }}</span>
         @endforeach
       </div>
+      <div id="backend-comments" style="margin-top:50px;">
+        <h3>Comments <small> {{ $post->comments()->count() }} total</small></h3>
+        <table class="table">
+          <thead>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Comment</th>
+            <th></th>
+          </thead>
+          <tbody>
+            @foreach ($post->comments as $comment)
+              <tr>
+                <td>{{$comment->name}}</td>
+                <td>{{$comment->email}}</td>
+                <td>{{$comment->comment}}</td>
+                <td>
+                  <a href="#" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
+                  <a href="#" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-trash"></span></a>
+                </td>
+              </tr>
+            @endforeach
+          </tbody>
+        </table>
+      </div>
     </div>
     <div class="col-md-4">
       <div class="well">
