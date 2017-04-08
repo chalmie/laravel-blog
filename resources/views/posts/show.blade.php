@@ -22,7 +22,7 @@
             <th>Name</th>
             <th>Email</th>
             <th>Comment</th>
-            <th></th>
+            <th width="70px"></th>
           </thead>
           <tbody>
             @foreach ($post->comments as $comment)
@@ -32,7 +32,7 @@
                 <td>{{$comment->comment}}</td>
                 <td>
                   <a href="{{ route('comments.edit', $comment->id) }}" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
-                  <a href="{{ route('comments.destroy', $comment->id) }}" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-trash"></span></a>
+                  <a href="{{ route('comments.delete', $comment->id) }}" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-trash"></span></a>
                 </td>
               </tr>
             @endforeach
