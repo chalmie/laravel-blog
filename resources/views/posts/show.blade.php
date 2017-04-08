@@ -31,8 +31,8 @@
                 <td>{{$comment->email}}</td>
                 <td>{{$comment->comment}}</td>
                 <td>
-                  <a href="#" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
-                  <a href="#" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-trash"></span></a>
+                  <a href="{{ route('comments.edit', $comment->id) }}" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
+                  <a href="{{ route('comments.destroy', $comment->id) }}" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-trash"></span></a>
                 </td>
               </tr>
             @endforeach
