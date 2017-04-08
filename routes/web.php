@@ -26,6 +26,9 @@ Route::get('blog/{slug}', ['uses' => 'BlogController@getSingle', 'as' => 'blog.s
 
 // Comments
 Route::post('comments/{id}', ['uses' => 'CommentsController@store', 'as' => 'comments.store']);
+Route::get('comments/{id}/edit', ['uses' => 'CommentsController@edit', 'as' => 'comments.edit']);
+Route::update('comments/{id}', ['uses' => 'CommentsController@update', 'as' => 'comments.update']);
+Route::delete('comments/{id}', ['uses' => 'CommentsController@destroy', 'as' => 'comments.destroy']);
 
 // Admin Posts
 Route::resource('posts', 'PostController');
