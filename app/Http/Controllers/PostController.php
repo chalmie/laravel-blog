@@ -62,7 +62,7 @@ class PostController extends Controller
       $post->slug = $request->slug;
       $post->category_id = $request->category_id;
       $post->body = Purifier::clean($request->body);
-      $post->save();
+
 
       if ($request->hasFile('featured_image')) {
         $image = $request->file('featured_image');
@@ -73,6 +73,7 @@ class PostController extends Controller
         $post->image = $filename;
       }
 
+      $post->save();
 
       // Second parameter 'false' means 'Do not override existing associations'.
       // If it's true, past associations will be deleted.
