@@ -11,6 +11,7 @@ use App\Category;
 use App\Tag;
 use Session;
 use Purifier;
+use Image;
 
 class PostController extends Controller
 {
@@ -62,6 +63,16 @@ class PostController extends Controller
       $post->category_id = $request->category_id;
       $post->body = Purifier::clean($request->body);
       $post->save();
+
+      if ($request->hasFile('featured_image')) {
+        $image = $request->file('featured_image');
+        $filename = time() . '.' . $image->getClientOriginalExtension();
+        $location = public_path('images/' . $filename);
+        Image::make($image)->resize(800, 400)->save($location);
+
+        $post->image = $filename;
+      }
+
 
       // Second parameter 'false' means 'Do not override existing associations'.
       // If it's true, past associations will be deleted.
