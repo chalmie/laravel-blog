@@ -3,8 +3,17 @@
 @section('title', '| Create New Post')
 
 @section('stylesheets')
+
   {!! Html::style('css/parsley.css') !!}
   {!! Html::style('css/select2.min.css') !!}
+  <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
+
+  <script>
+    tinymce.init({
+      selector: 'textarea'
+    })
+  </script>
+
 @endsection
 
 @section('content')
@@ -35,7 +44,7 @@
         </select>
 
         {{ Form::label('body', 'Body:') }}
-        {{ Form::textarea('body', null, array('class' => 'form-control', 'required' => '')) }}
+        {{ Form::textarea('body', null, array('class' => 'form-control')) }}
 
         {{-- inline styling needs to moved to css --}}
         {{ Form::submit('Create Post', array('class' => 'btn btn-info btn-lg btn-block', 'style' => 'margin-top: 20px;')) }}
