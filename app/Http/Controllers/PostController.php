@@ -184,6 +184,7 @@ class PostController extends Controller
     {
       $post = Post::find($id);
       $post->tags()->detach();
+      Storage::delete($post->image);
       $post->delete();
 
       Session::flash('success', 'This post was successfully deleted.');
