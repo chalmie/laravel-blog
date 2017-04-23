@@ -12,6 +12,7 @@ use App\Tag;
 use Session;
 use Purifier;
 use Image;
+use Storage;
 
 class PostController extends Controller
 {
@@ -54,7 +55,8 @@ class PostController extends Controller
         'title'       => 'required|max:255',
         'slug'        => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
         'category_id' => 'required|integer',
-        'body'        => 'required'
+        'body'        => 'required',
+        'featured_image' => 'sometimes|image'
       ));
 
       $post = new Post;
@@ -131,26 +133,32 @@ class PostController extends Controller
     {
       $post = Post::find($id);
 
-      if($request->input('slug') == $post->slug) {
-        $this->validate($request, array(
-          'title' => 'required|max:255',
-          'category_id' => 'required|integer',
-          'body' => 'required'
-        ));
-      } else {
-        $this->validate($request, array(
-          'title' => 'required|max:255',
-          'slug' => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
-          'category_id' => 'required|integer',
-          'body' => 'required'
-        ));
-      }
+      $this->validate($request, array(
+        'title' => 'required|max:255',
+        'slug' => "required|alpha_dash|min:5|max:255|unique:posts,slug,$id",
+        'category_id' => 'required|integer',
+        'body' => 'required',
+        'featured_image' => 'image'
+      ));
 
       $post->title = $request->input('title');
       $post->slug = $request->input('slug');
       $post->category_id = $request->input('category_id');
       // The '->input' isn't necessary. See 'store'.
       $post->body = Purifier::clean($request->input('body'));
+
+      if ($request->hasFile('featured_image')) {
+        $image = $request->file('featured_image');
+        $filename = time() . '.' . $image->getClientOriginalExtension();
+        $location = public_path('images/' . $filename);
+        Image::make($image)->resize(800, 400)->save($location);
+        $oldFileName = $post->image;
+        // Update the DB
+        $post->image = $filename;
+        // Delete the old image
+        Storage::delete($oldFileName);
+      }
+
       $post->save();
 
       // Second parameter 'false' means 'Do not override existing associations'.
